@@ -1,0 +1,39 @@
+﻿
+<h1>Hello World From First View</h1>
+
+<style>
+    h1{
+    color: red;
+    }
+</style>
+
+<script>
+    console.log("Hello");
+</script>
+<!--Razor Engien-->
+<!--Bolck Code-->
+@{
+    int x = 10;
+    int y = x + 10;
+}
+
+<!--Inline Statment-->
+<h2>@x</h2>
+<h2>@y</h2>
+
+@if ( x > y)
+{
+    <h2>X Greater Than Y</h2>
+}
+else
+{
+    <h2>X Less Than Y</h2>
+}
+
+<!--Looping-->
+@for (int i = 0; i < 10; i++)
+{
+    <li>
+        @i
+    </li>
+}
