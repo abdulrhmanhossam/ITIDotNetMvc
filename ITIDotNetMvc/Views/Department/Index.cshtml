@@ -1,0 +1,29 @@
+﻿@model IEnumerable<ITIDotNetMvc.Models.Entites.Department>
+
+@{
+    ViewData["Title"] = "Department Index";
+}
+
+<h1>Index</h1>
+
+
+<table class="table table-hover table-bordered">
+    <tr>
+        <th>No.</th>
+        <th>Department Name</th>
+        <th>Manager Name</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.ManagerName</td>
+        </tr>
+    }
+</table>
+
+
+
+
+
