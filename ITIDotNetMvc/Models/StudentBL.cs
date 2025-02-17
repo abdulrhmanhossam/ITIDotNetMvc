@@ -1,4 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using ITIDotNetMvc.Models.Entites;
 
 namespace ITIDotNetMvc.Models;
 

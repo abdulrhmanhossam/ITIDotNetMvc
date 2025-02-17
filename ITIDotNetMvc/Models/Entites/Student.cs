@@ -1,4 +1,4 @@
-﻿namespace ITIDotNetMvc.Models;
+﻿namespace ITIDotNetMvc.Models.Entites;
 
 public class Student
 {

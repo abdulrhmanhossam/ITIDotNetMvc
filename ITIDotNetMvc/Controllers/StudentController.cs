@@ -1,4 +1,5 @@
 ﻿using ITIDotNetMvc.Models;
+using ITIDotNetMvc.Models.Entites;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ITIDotNetMvc.Controllers;
