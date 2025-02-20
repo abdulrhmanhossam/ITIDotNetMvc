@@ -1,4 +1,4 @@
-﻿@model ITIDotNetMvc.Models.Entites.Employee
+﻿@model EmployeeDepartmentViewModel
 
 @{
     ViewData["Title"] = "Details";
@@ -6,14 +6,13 @@
 
 <h1>Details</h1>
 
-<h2>@Model.Name</h2>
+<h2 style="color:@Model.Color">@Model.EmployeeName</h2>
 
-<h1>@ViewData["Msg"]</h1>
-<h1>@ViewData["Temp"]</h1>
-<h1>@ViewData["Brch"]</h1>
+<h2>@Model.DepartmentName</h2>
+<h2>@Model.Msg</h2>
 
 <select class="form form-control">
-    @foreach (var item in (List<String>)ViewData["Brch"]!)
+    @foreach (var item in Model.Branches)
     {
         <option>@item</option>
     }
