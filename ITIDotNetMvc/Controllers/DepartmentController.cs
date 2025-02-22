@@ -15,4 +15,21 @@ public class DepartmentController : Controller
 
         return View("Index", departmentList); // Model ==> List<Department>
     }
+
+    public IActionResult Add()
+    {
+        return View("Add");
+    }
+
+    public IActionResult SaveAdd(Department department)
+    {
+        if (department.Name is not null)
+        {
+            dbContext.Departments.Add(department);
+            dbContext.SaveChanges();
+            // calling action from anthoer action
+            return RedirectToAction("Index");
+        }
+        return View("Add", department);
+    }
 }
