@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ITIDotNetMvc.Models.Entites.Employee>
+﻿@model IEnumerable<Employee>
 
 @{
     ViewData["Title"] = "Employee Index";
@@ -29,6 +29,9 @@
                 <img src="~/Images/@item.ImageUrl" style="width:80px"/>
             </td>
             <td>@item.Department.Name</td>
+            <td>
+                <a href="/Employee/Edit/@item.Id">Edit</a>
+            </td>
         </tr>
     }
 </table>

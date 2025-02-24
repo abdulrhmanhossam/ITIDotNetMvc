@@ -71,5 +71,35 @@ public class EmployeeController : Controller
         return View(employeeDepartmentViewModel);
     }
 
+    public IActionResult Edit(int id)
+    {
+        Employee employee = dbContext.Employees
+            .Find(id)!;
+        if (employee is null)
+            return NotFound();
+        return View("Edit",employee);
+    }
+    [HttpPost]
+    public IActionResult SaveEdit(Employee employeeRequest)
+    {
+        if (employeeRequest.Name is not null)
+        {
+            Employee employee = dbContext.Employees
+                .Find(employeeRequest.Id)!;
 
+            employee.Name = employeeRequest.Name;
+            employee.Salary = employeeRequest.Salary;
+            employee.Address = employeeRequest.Address;
+            employee.JobTitle = employeeRequest.JobTitle;
+            employee.ImageUrl = employeeRequest.ImageUrl;
+            employee.DepartmentId = employeeRequest.DepartmentId;
+
+            dbContext.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        return View("Edit", employeeRequest);
+
+    }
 }

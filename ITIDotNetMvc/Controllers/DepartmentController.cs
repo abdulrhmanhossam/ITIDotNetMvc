@@ -16,11 +16,13 @@ public class DepartmentController : Controller
         return View("Index", departmentList); // Model ==> List<Department>
     }
 
+    [HttpGet]
     public IActionResult Add()
     {
         return View("Add");
     }
 
+    [HttpPost] // fillter to validate data 
     public IActionResult SaveAdd(Department department)
     {
         if (department.Name is not null)

@@ -1,0 +1,43 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<form action="/Employee/SaveEdit/@Model.Id" method="post">
+    <div>
+        <label id="name">Name</label>
+        <input id="name" name="Name" value="@Model.Name" class="form form-control " />
+    </div>
+    <div>
+        <label id="salary">Salary</label>
+        <input type="number" id="salary" name="Salary" value="@Model.Salary" class="form form-control " />
+    </div>
+    <div>
+        <label id="jobTitle">JobTitle</label>
+        <input id="jobTitle" name="JobTitle" value="@Model.JobTitle" class="form form-control " />
+    </div>
+    <div>
+        <label id="address">Address</label>
+        <input id="address" name="Address" value="@Model.Address" class="form form-control " />
+    </div>
+    <div>
+        <label id="imageUrl">ImageUrl</label>
+        <input id="imageUrl" name="ImageUrl" value="@Model.ImageUrl" class="form form-control " />
+    </div>
+    <div>
+        <label id="departmentId">DepartmentId</label>
+        <input type="number" id="departmentId" name="DepartmentId" value="@Model.DepartmentId" class="form form-control " />
+    </div>
+    <div style="margin-top:3px">
+        <button type="submit" class="btn btn-success">Save</button>
+    </div>
+</form>
+
+<div>
+    <a href="/Employee/Index">Back To List</a>
+</div>
+
+
+
