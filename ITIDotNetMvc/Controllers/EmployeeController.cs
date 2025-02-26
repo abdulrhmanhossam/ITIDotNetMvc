@@ -75,12 +75,27 @@ public class EmployeeController : Controller
     {
         Employee employee = dbContext.Employees
             .Find(id)!;
-        if (employee is null)
-            return NotFound();
-        return View("Edit",employee);
+        List<Department> departmentList = dbContext.Departments.ToList();
+        //-----------Create view model and mapping-----------
+        var employeeDepartmentListViewModel = 
+            new EmployeeDepartmentListViewModel
+            {
+                Id = employee.Id,
+                Name = employee.Name,
+                Address = employee.Address,
+                Salary = employee.Salary,
+                JobTitle = employee.JobTitle,
+                ImageUrl = employee.ImageUrl,
+                DepartmentId = employee.DepartmentId,
+                DepartmentList = departmentList
+            };
+
+        return View("Edit",employeeDepartmentListViewModel);
     }
+
     [HttpPost]
-    public IActionResult SaveEdit(Employee employeeRequest)
+    public IActionResult SaveEdit
+        (EmployeeDepartmentListViewModel employeeRequest)
     {
         if (employeeRequest.Name is not null)
         {
@@ -98,6 +113,8 @@ public class EmployeeController : Controller
 
             return RedirectToAction("Index");
         }
+
+        employeeRequest.DepartmentList = dbContext.Departments.ToList();
 
         return View("Edit", employeeRequest);
 
