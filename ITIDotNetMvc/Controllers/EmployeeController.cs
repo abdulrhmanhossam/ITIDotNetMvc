@@ -71,6 +71,28 @@ public class EmployeeController : Controller
         return View(employeeDepartmentViewModel);
     }
 
+    [HttpGet]
+    public IActionResult New()
+    {
+        ViewData["DepartmentList"] = dbContext.Departments.ToList();
+        return View("New");
+    }
+
+    [HttpPost]
+    public IActionResult SaveNew
+        (Employee employeeFromRequset)
+    {
+        if (employeeFromRequset.Name is not null 
+            && employeeFromRequset.Salary >= 6000)
+        {
+            dbContext.Employees.Add(employeeFromRequset);
+            dbContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        ViewData["DepartmentList"] = dbContext.Departments.ToList();
+        return View("New", employeeFromRequset);
+    }
+
     public IActionResult Edit(int id)
     {
         Employee employee = dbContext.Employees
