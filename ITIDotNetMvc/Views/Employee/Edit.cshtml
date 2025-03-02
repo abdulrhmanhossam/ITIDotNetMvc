@@ -5,10 +5,16 @@
 
 <h1>Edit</h1>
 
-<form action="/Employee/SaveEdit/@Model.Id" method="post">
+<form method="post" asp-action="SaveEdit" asp-controller="Employee" asp-route-id="@Model.Id">
+    <!--action="/Employee/SaveEdit/@Model.Id"-->
     <div>
-        <label id="name">Name</label>
-        <input id="name" name="Name" value="@Model.Name" class="form form-control " />
+        @* <label id="Name">Name</label> *@
+        @* <input id="name" name="Name" value="@Model.Name" class="form form-control " /> *@
+        @* @Html.LabelFor(e => e.Name) *@
+        <label asp-for="Name"></label>
+        <input class="form form-control" asp-for="Name" />
+        @* @Html.EditorFor(e => e.Name, new { @class = "form form-control" }) *@
+        @* @Html.TextBoxFor(e => e.Name, new { @class = "form form-control" }) *@
     </div>
     <div>
         <label id="salary">Salary</label>
@@ -51,7 +57,9 @@
 </form>
 
 <div>
-    <a href="/Employee/Index">Back To List</a>
+    @* <a href="/Employee/Index">Back To List</a> *@
+    <a asp-action="Index" asp-controller="Employee">Back To List</a>
+    @* @Html.ActionLink("Back To List", "Index", "Employee") *@
 </div>
 
 
